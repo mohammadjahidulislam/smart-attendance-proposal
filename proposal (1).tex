@@ -6,7 +6,7 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{booktabs}
+\usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{enumitem}
@@ -26,20 +26,56 @@
   breaklines=true, language=Java, showstringspaces=false
 }
 
-\newcommand{\proj}{Smart Attendance Management System}
+% Boxed tables: slightly taller rows
+\renewcommand{\arraystretch}{1.35}
 
-\title{\textbf{\proj}\\[4pt]\large Final Capstone Project --- Part I: Proposal and Prototyping}
-\author{Md Jahidul Islam\\Student ID: IT24018\\[4pt]
-Course: Software Engineering and Project Management\\[2pt]
-{[University Name], [Department Name]}}
+\newcommand{\proj}{QR Code Based Attendance System}
+
+\title{\proj}
+\author{Md Jahidul Islam}
 \date{\today}
 
-\begin{document}
-\maketitle
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Md Jahidul Islam (IT24018)}
+\rhead{\small \proj}
+\cfoot{\thepage}
 
-\begin{center}
-\textbf{Repository:} \url{https://github.com/mohammadjahidulislam/smart-attendance-proposal}
-\end{center}
+\begin{document}
+
+%==========================================================
+% TITLE PAGE
+%==========================================================
+\begin{titlepage}
+\centering
+\vspace*{1.5cm}
+{\LARGE\bfseries \proj\par}
+\vspace{0.4cm}
+{\large Final Capstone Project --- Part I: Proposal and Prototyping\par}
+\vspace{1.5cm}
+
+{\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|p{4.2cm}|p{9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Submission Details}}\\
+\hline
+\textbf{Submitted by} & Md Jahidul Islam\\ \hline
+\textbf{Student ID} & IT24018\\ \hline
+\textbf{Course} & Software Engineering and Project Management\\ \hline
+\textbf{Department} & Information and Communication Technology\\ \hline
+\textbf{University} & Mawlana Bhashani Science and Technology University\\ \hline
+\textbf{Supervised by} & Dr. Ziaur Rahman\newline
+Professor\newline
+Dept. of ICT, MBSTU\\ \hline
+\textbf{Date} & \today\\
+\hline
+\end{tabular}}
+
+\vspace{1.5cm}
+\textbf{Repository:}\\
+\url{https://github.com/mohammadjahidulislam/smart-attendance-proposal}
+\vfill
+\end{titlepage}
 
 \begin{abstract}
 Manual and paper-based attendance in universities is slow, error-prone and hard to report on.
@@ -90,50 +126,50 @@ This project differs from a basic attendance recorder by focusing on (1) leave m
 (2) automatic low-attendance warnings and (3) an administrator reporting dashboard.
 
 \subsection{Stakeholders}
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Stakeholder} & \textbf{Interest}\\
-\midrule
-Student & Check in, view own attendance, apply for leave, receive warnings\\
-Teacher & Open sessions, mark/correct attendance, approve leave, view course reports\\
-Administrator & Manage users and courses, view dashboards and reports\\
-Department head & Monitor attendance trends\\
-Developer (author) & Design, implement, test and document the system\\
-\bottomrule
+\hline
+Student & Check in, view own attendance, apply for leave, receive warnings\\ \hline
+Teacher & Open sessions, mark/correct attendance, approve leave, view course reports\\ \hline
+Administrator & Manage users and courses, view dashboards and reports\\ \hline
+Department head & Monitor attendance trends\\ \hline
+Developer (Md Jahidul Islam) & Design, implement, test and document the system\\
+\hline
 \end{tabularx}
 
 %==========================================================
 \section{Requirements}
 \subsection{Functional Requirements}
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{ID} & \textbf{Requirement}\\
-\midrule
-FR1 & Users shall log in with role-based access (Student, Teacher, Admin).\\
-FR2 & Admin shall create and manage users, courses and enrolments.\\
-FR3 & Teacher shall open and close a class session for a course.\\
-FR4 & Student shall mark attendance while a session is open; teacher may correct records.\\
-FR5 & System shall store status as Present, Absent, Late or Excused.\\
-FR6 & Student shall submit a leave request with reason and dates.\\
-FR7 & Teacher shall approve or reject leave; approved leave marks sessions as Excused.\\
-FR8 & System shall compute attendance percentage per student per course.\\
-FR9 & System shall notify students whose attendance is below the threshold.\\
+\hline
+FR1 & Users shall log in with role-based access (Student, Teacher, Admin).\\ \hline
+FR2 & Admin shall create and manage users, courses and enrolments.\\ \hline
+FR3 & Teacher shall open and close a class session for a course.\\ \hline
+FR4 & Student shall mark attendance while a session is open; teacher may correct records.\\ \hline
+FR5 & System shall store status as Present, Absent, Late or Excused.\\ \hline
+FR6 & Student shall submit a leave request with reason and dates.\\ \hline
+FR7 & Teacher shall approve or reject leave; approved leave marks sessions as Excused.\\ \hline
+FR8 & System shall compute attendance percentage per student per course.\\ \hline
+FR9 & System shall notify students whose attendance is below the threshold.\\ \hline
 FR10 & System shall export course and department reports as CSV and PDF.\\
-\bottomrule
+\hline
 \end{tabularx}
 
 \subsection{Non-Functional Requirements}
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Attribute} & \textbf{Requirement}\\
-\midrule
-Performance & Attendance marking shall complete within 2 seconds for up to 200 concurrent users.\\
-Security & Passwords hashed; role-based authorization; HTTPS in deployment.\\
-Usability & A new user shall mark attendance within 3 clicks after login.\\
-Reliability & Availability of at least 99\% during working hours; daily database backup.\\
-Maintainability & Layered architecture; unit-test coverage of at least 60\% for core classes.\\
+\hline
+Performance & Attendance marking shall complete within 2 seconds for up to 200 concurrent users.\\ \hline
+Security & Passwords hashed; role-based authorization; HTTPS in deployment.\\ \hline
+Usability & A new user shall mark attendance within 3 clicks after login.\\ \hline
+Reliability & Availability of at least 99\% during working hours; daily database backup.\\ \hline
+Maintainability & Layered architecture; unit-test coverage of at least 60\% for core classes.\\ \hline
 Portability & Runs on modern browsers and on Windows/Linux servers.\\
-\bottomrule
+\hline
 \end{tabularx}
 
 %==========================================================
@@ -143,49 +179,48 @@ Portability & Runs on modern browsers and on Windows/Linux servers.\\
 \textbf{Operational:} workflow mirrors the existing manual process. \textbf{Schedule:} 12 weeks, one developer.
 
 \subsection{Risk Register}
-\begin{tabularx}{\textwidth}{lXcc X}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|c|c|X|}
+\hline
 \textbf{ID} & \textbf{Risk} & \textbf{Prob.} & \textbf{Impact} & \textbf{Mitigation}\\
-\midrule
-R1 & Requirements change late & Med & High & Sprint reviews, prioritised backlog\\
-R2 & Single developer unavailable (illness) & Low & High & Buffer in each sprint, daily commits\\
-R3 & Proxy attendance by students & High & Med & Time-limited sessions, teacher correction, audit log\\
-R4 & Data loss & Low & High & Daily backups, version control\\
-R5 & Underestimated effort & Med & Med & Re-estimate each sprint, cut low-priority features\\
+\hline
+R1 & Requirements change late & Med & High & Sprint reviews, prioritised backlog\\ \hline
+R2 & Single developer unavailable (illness) & Low & High & Buffer in each sprint, daily commits\\ \hline
+R3 & Proxy attendance by students & High & Med & Time-limited sessions, teacher correction, audit log\\ \hline
+R4 & Data loss & Low & High & Daily backups, version control\\ \hline
+R5 & Underestimated effort & Med & Med & Re-estimate each sprint, cut low-priority features\\ \hline
 R6 & Security breach / weak passwords & Low & High & Hashing, input validation, role checks\\
-\bottomrule
+\hline
 \end{tabularx}
 
 %==========================================================
 \section{Technology Stack, Resources and Budget}
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Layer} & \textbf{Choice}\\
-\midrule
-Language & Java 17\\
-Backend / Web & Javalin (REST API)\\
-Database & SQLite for prototype; MySQL/PostgreSQL for deployment\\
-Frontend & HTML, CSS, JavaScript (responsive); JavaFX for the desktop prototype\\
-Build & Maven\\
-Testing & JUnit 5\\
-Version control & Git and GitHub\\
+\hline
+Language & Java 17\\ \hline
+Backend / Web & Javalin (REST API)\\ \hline
+Database & SQLite for prototype; MySQL/PostgreSQL for deployment\\ \hline
+Frontend & HTML, CSS, JavaScript (responsive); JavaFX for the desktop prototype\\ \hline
+Build & Maven\\ \hline
+Testing & JUnit 5\\ \hline
+Version control & Git and GitHub\\ \hline
 Documentation & \LaTeX{}, PlantUML/TikZ\\
-\bottomrule
+\hline
 \end{tabularx}
 
 \subsection{Estimated Budget}
-\begin{tabularx}{\textwidth}{Xr}
-\toprule
+\begin{tabularx}{\textwidth}{|X|r|}
+\hline
 \textbf{Item} & \textbf{Cost (BDT)}\\
-\midrule
-Developer effort (12 weeks, academic project) & 0\\
-Development laptop (existing) & 0\\
-Cloud hosting / domain (optional, 3 months) & 3{,}000\\
-Internet and miscellaneous & 2{,}000\\
-Contingency (10\%) & 500\\
-\midrule
+\hline
+Developer effort (12 weeks, academic project) & 0\\ \hline
+Development laptop (existing) & 0\\ \hline
+Cloud hosting / domain (optional, 3 months) & 3{,}000\\ \hline
+Internet and miscellaneous & 2{,}000\\ \hline
+Contingency (10\%) & 500\\ \hline
 \textbf{Total} & \textbf{5{,}500}\\
-\bottomrule
+\hline
 \end{tabularx}
 
 %==========================================================
@@ -197,31 +232,31 @@ Each sprint ends with a working increment, a review and a retrospective. The pro
 in GitHub Projects.
 
 \subsection{Sprint Plan}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
 \textbf{Sprint} & \textbf{Dates (2026--27)} & \textbf{Goal and deliverable}\\
-\midrule
-1 & 2 Nov -- 15 Nov & Requirements, backlog, proposal document\\
-2 & 16 Nov -- 29 Nov & UML design, database schema, UI wireframes\\
-3 & 30 Nov -- 13 Dec & Login, users, courses, sessions, attendance marking\\
-4 & 14 Dec -- 27 Dec & Leave management and approval workflow\\
-5 & 28 Dec -- 10 Jan & Percentage calculation, warnings, reports (CSV/PDF)\\
+\hline
+1 & 2 Nov -- 15 Nov & Requirements, backlog, proposal document\\ \hline
+2 & 16 Nov -- 29 Nov & UML design, database schema, UI wireframes\\ \hline
+3 & 30 Nov -- 13 Dec & Login, users, courses, sessions, attendance marking\\ \hline
+4 & 14 Dec -- 27 Dec & Leave management and approval workflow\\ \hline
+5 & 28 Dec -- 10 Jan & Percentage calculation, warnings, reports (CSV/PDF)\\ \hline
 6 & 11 Jan -- 24 Jan & Testing, bug fixing, deployment, final documentation\\
-\bottomrule
+\hline
 \end{tabularx}
 
 \subsection{Milestones and Deliverables}
-\begin{tabularx}{\textwidth}{llX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
 \textbf{ID} & \textbf{Week} & \textbf{Milestone / Deliverable}\\
-\midrule
-M1 & 2 & Approved proposal and product backlog\\
-M2 & 4 & UML diagrams and database design complete\\
-M3 & 6 & Attendance module working (demo)\\
-M4 & 8 & Leave management working\\
-M5 & 10 & Reports and warnings working\\
+\hline
+M1 & 2 & Approved proposal and product backlog\\ \hline
+M2 & 4 & UML diagrams and database design complete\\ \hline
+M3 & 6 & Attendance module working (demo)\\ \hline
+M4 & 8 & Leave management working\\ \hline
+M5 & 10 & Reports and warnings working\\ \hline
 M6 & 12 & Tested system, user manual, final report\\
-\bottomrule
+\hline
 \end{tabularx}
 
 \subsection{Gantt Chart}
@@ -403,17 +438,17 @@ M6 & 12 & Tested system, user manual, final report\\
 \end{figure}
 
 \subsubsection*{Attributes.}
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Entity} & \textbf{Attributes (primary key in italics)}\\
-\midrule
-Student & \textit{studentId}, name, department, email, passwordHash\\
-Teacher & \textit{teacherId}, name, email, passwordHash\\
-Course & \textit{courseCode}, title, credit, teacherId (FK)\\
-ClassSession & \textit{sessionId}, courseCode (FK), teacherId (FK), date, startTime, room, isOpen\\
-Attendance & \textit{attendanceId}, studentId (FK), sessionId (FK), status, markedAt\\
+\hline
+Student & \textit{studentId}, name, department, email, passwordHash\\ \hline
+Teacher & \textit{teacherId}, name, email, passwordHash\\ \hline
+Course & \textit{courseCode}, title, credit, teacherId (FK)\\ \hline
+ClassSession & \textit{sessionId}, courseCode (FK), teacherId (FK), date, startTime, room, isOpen\\ \hline
+Attendance & \textit{attendanceId}, studentId (FK), sessionId (FK), status, markedAt\\ \hline
 LeaveRequest & \textit{leaveId}, studentId (FK), fromDate, toDate, reason, status, approvedBy\\
-\bottomrule
+\hline
 \end{tabularx}
 
 %----------------------------------------------------------
@@ -469,16 +504,16 @@ The prototype is a simple interface (JavaFX desktop or Javalin web page) built o
 \texttt{Student}, \texttt{Teacher}, \texttt{Course}, \texttt{ClassSession} and \texttt{AttendanceRecord}.
 \texttt{LeaveRequest} is added in Sprint 4.
 
-\begin{tabularx}{\textwidth}{lX}
-\toprule
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
 \textbf{Class} & \textbf{Role in prototype}\\
-\midrule
-Student & Logs in, marks attendance, sees own percentage\\
-Teacher & Opens/closes a session, sees the attendance list\\
-Course & Groups sessions and computes course attendance\\
-ClassSession & Represents one class meeting, open or closed\\
+\hline
+Student & Logs in, marks attendance, sees own percentage\\ \hline
+Teacher & Opens/closes a session, sees the attendance list\\ \hline
+Course & Groups sessions and computes course attendance\\ \hline
+ClassSession & Represents one class meeting, open or closed\\ \hline
 AttendanceRecord & Stores one student's status for one session\\
-\bottomrule
+\hline
 \end{tabularx}
 
 \subsubsection*{Core class (excerpt).}
